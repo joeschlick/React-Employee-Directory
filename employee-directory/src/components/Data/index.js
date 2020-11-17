@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import Table from "./table";
-import Api from "../util/api";
-import api from "../util/api";
+import Table from "../Table";
+import api from "../../util/api";
 
 export default class Data extends Component {
   state = {
@@ -58,3 +57,5 @@ export default class Data extends Component {
     });
   };
 }
+
+export default Data;
