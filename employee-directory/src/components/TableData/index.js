@@ -3,17 +3,15 @@ import React from "react";
 
 function FriendCard(props) {
   return (
-    <table className="table table-dark">
       <tbody>
         <tr>
-          <td>{props.id}</td>
+          <th scope="row">{props.id}</th>
           <td>{props.firstName}</td>
           <td>{props.lastName}</td>
           <td>{props.department}</td>
           <td>{props.email}</td>
         </tr>
       </tbody>
-    </table>
   );
 }
 

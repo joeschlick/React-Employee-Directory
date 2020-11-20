@@ -2,7 +2,6 @@ import React from "react";
 
 function TableHeader(props) {
   return (
-    <table className="table table-dark">
       <thead>
         <th scope="col">
           <strong>ID#:</strong>
@@ -20,7 +19,6 @@ function TableHeader(props) {
           <strong>Email:</strong>
         </th>
       </thead>
-    </table>
   );
 }
 
