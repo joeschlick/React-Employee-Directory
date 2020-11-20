@@ -4,20 +4,15 @@ import React from "react";
 function FriendCard(props) {
   return (
     <table className="table table-dark">
-        <thead>
-          <th>
-            <strong>First Name:</strong> {props.firstName}
-          </th>
-          <th>
-            <strong>Last Name:</strong> {props.lastName}
-          </th>
-          <th>
-            <strong>Department:</strong> {props.department}
-          </th>
-          <th>
-            <strong>Email:</strong> {props.email}
-          </th>
-        </thead>
+      <tbody>
+        <tr>
+          <td>{props.id}</td>
+          <td>{props.firstName}</td>
+          <td>{props.lastName}</td>
+          <td>{props.department}</td>
+          <td>{props.email}</td>
+        </tr>
+      </tbody>
     </table>
   );
 }

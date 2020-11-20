@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import FriendCard from "./components/FriendCard";
+import TableHeader from "./components/TableHeader"
 import Wrapper from "./components/Wrapper";
 import Title from "./components/Title";
 import friends from "./friends.json";
@@ -22,12 +23,13 @@ class App extends Component {
     return (
       <Wrapper>
         <Title>Employee Directory</Title>
+        <TableHeader> </TableHeader> 
         {this.state.friends.map(friend => (
           <FriendCard
             removeFriend={this.removeFriend}
             id={friend.id}
             key={friend.id}
-            name={friend.firstName}
+            firstName={friend.firstName}
             lastName={friend.lastName}
             department={friend.department}
             email={friend.email}
