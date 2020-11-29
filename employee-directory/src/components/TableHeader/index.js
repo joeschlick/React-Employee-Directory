@@ -1,12 +1,24 @@
 import React from "react";
 
 function TableHeader(props) {
+  function handleSort(param) {
+    props.handleSort(param)
+  }
   return (
       <thead>
-        <th scope="col">
+        <th 
+          scope="col"
+          onClick= {() => {
+            handleSort("id")
+          }}
+        >
           <strong>ID#:</strong>
         </th>
-        <th scope="col">
+        <th scope="col"
+        onClick= {() => {
+          handleSort("firstName")
+        }}
+        >
           <strong>First Name:</strong>
         </th>
         <th scope="col">

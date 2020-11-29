@@ -1,42 +1,57 @@
 import React, { Component } from "react";
 import TableBody from "./components/TableBody";
-import FriendCard from "./components/TableData";
+import TableData from "./components/TableData";
 import TableHeader from "./components/TableHeader";
 import Wrapper from "./components/Wrapper";
 import Title from "./components/Title";
-import friends from "./friends.json";
+import employees from "./employees.json";
 
 class App extends Component {
   // Setting this.state.friends to the friends json array
   state = {
-    friends,
+    sortingOrder: "descend",
+    initialData: employees,
+    filterData: employees.reverse()
+
   };
 
-  removeFriend = (id) => {
-    // Filter this.state.friends for friends with an id not equal to the id being removed
-    const friends = this.state.friends.filter((friend) => friend.id !== id);
-    // Set this.state.friends equal to the new friends array
-    this.setState({ friends });
-  };
+  changeOrder = (param) => {
+    if (this.state.sortingOrder === "descend") {
+      this.setState({
+        sortingOrder: "ascend"
+      })
+      const sortedArray = this.state.filterData.sort((a, b) => {if (a[param]>b[param]) {return 1} else if (b[param]>a[param]) {return -1} else {return 0}})
+      this.setState({filterData: sortedArray})
+    } else {
+      this.setState({
+        sortingOrder: "descend"
+    })
+    const sortedArray = this.state.filterData.sort((a, b) => {if (a[param]<b[param]) {return 1} else if (b[param]<a[param]) {return -1} else {return 0}})
+      this.setState({filterData: sortedArray})
+    }
+  }
 
-  // Map over this.state.friends and render a FriendCard component for each friend object
+  // revers the array 
+  // Map over this.state.employees and render a FriendCard component for each friend object
   render() {
+
     return (
       <Wrapper>
         <Title>Employee Directory</Title>
         <TableBody>
-          <TableHeader> </TableHeader>
-          {this.state.friends.map((friend) => (
-            <FriendCard
-              removeFriend={this.removeFriend}
-              id={friend.id}
-              key={friend.id}
-              firstName={friend.firstName}
-              lastName={friend.lastName}
-              department={friend.department}
-              email={friend.email}
-            />
-          ))}
+          <TableHeader handleSort={this.changeOrder} ></TableHeader>
+            {this.state.filterData.map((friend) => (
+              <TableData
+                id={friend.id}
+                key={friend.id}
+                firstName={friend.firstName}
+                lastName={friend.lastName}
+                department={friend.department}
+                email={friend.email}
+              />
+              
+            ))}
+
         </TableBody>
       </Wrapper>
     );
